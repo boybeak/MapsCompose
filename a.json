@@ -1,0 +1,20 @@
+{
+  "params": {
+    "config": {
+      "srcChannelInfo": {
+        "channelName": "",
+        "token": ",",
+        "uid": 0beak,
+
+      },
+      "destChannelInfo": {
+        "channelName": "",
+        "destInfo": {
+          "channelName": "",
+          "token": ",",
+          "uid": 0
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+
+        // For mapbox
+        maven {
+            Properties properties = new Properties()
+            properties.load(new File(rootDir.absolutePath + "/local.properties").newDataInputStream())
+            def secret = properties.getProperty("map.mapbox")
+            logger.error("mapbox.secret=" + secret)
+
+            url 'https://api.mapbox.com/downloads/v2/releases/maven'
+            authentication {
+                basic(BasicAuthentication)
+            }
+            credentials {
+                // Do not change the username below.
+                // This should always be `mapbox` (not your username).
+                username = "mapbox"
+                // Use the secret token you stored in gradle.properties as the password
+                password = secret
+            }
+        }
+    }
+}
+rootProject.name = "MapsCompose"
+include ':app'
+include ':map-base'
+include ':map-tencent'
+include ':app-legacy'
+include ':map-google'
+include ':map-mapbox'
